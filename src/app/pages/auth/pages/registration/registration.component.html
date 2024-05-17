@@ -1,0 +1,55 @@
+<section fxLayoutAlign="center">
+
+  <mat-card>
+
+    <form fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="10px" #f="ngForm" (ngSubmit)="registrarUsuario(f)">
+
+      <mat-form-field>
+        <mat-label>Ingrese Nombre</mat-label>
+        <input type="text" matInput placeholder="IngreseNombre" name="nombre" ngModel required>
+        <mat-error>Debe ingresar un nombre</mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Ingrese Apellidos</mat-label>
+        <input type="text" matInput placeholder="IngreseApellidos" name="apellido" ngModel required>
+        <mat-error>Debe ingresar un apellido</mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Ingrese Username</mat-label>
+        <input type="text" matInput placeholder="IngreseUsername" name="username" ngModel required>
+        <mat-error>Debe ingresar un username</mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Ingrese telefono</mat-label>
+        <input type="text" matInput placeholder="IngreseTelefono" name="telefono" ngModel required>
+        <mat-error>Debe ingresar un telefono</mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Ingrese E-mail</mat-label>
+        <input type="email" matInput placeholder="E-mail" name="email" ngModel required>
+        <mat-error>Debe ingresar un E-mail</mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Ingrese password</mat-label>
+        <input type="password" matInput placeholder="Password" name="password" ngModel required minlength="7">
+        <mat-error>El password debe tener mas de 7 caracteres</mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Confirme password</mat-label>
+        <input type="password" matInput placeholder="ConfirmePassword" name="passwordConfirme" ngModel required minlength="7">
+        <mat-error>El password debe tener mas de 7 caracteres</mat-error>
+      </mat-form-field>
+
+      <button mat-raised-button color="primary" type="submit">Enviar</button>
+
+    </form>
+
+  </mat-card>
+
+</section>
