@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Observable } from 'rxjs';
+import * as fromRoot from '@app/store'
+import * as fromUser from '@app/store/user'
+import { Store } from '@ngrx/store'
+
 
 @Component({
   selector: 'app-login',
@@ -7,14 +12,20 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-
-  constructor() { }
+  loading$ !: Observable<boolean | null>;
+  constructor(
+    private store: Store<fromRoot.State>
+  ) { }
 
   ngOnInit(): void {
   }
 
   loginUsuario(form: NgForm){
-
+    const userLoginRequest : fromUser.EmailPasswordCredentials = {
+      email: form.value.email,
+      password: form.value.password
+    }
+    this.store.dispatch(new fromUser.SignInEmail(userLoginRequest))
   }
 
 }

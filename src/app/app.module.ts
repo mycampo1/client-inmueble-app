@@ -26,8 +26,15 @@ import { MatButtonModule } from '@angular/material/button';
 import { HeaderComponent } from './components/header/header.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MenuListComponent } from './components/menu-list/menu-list.component';
-import { MatListModule } from '@angular/material/list'
+import { MatListModule } from '@angular/material/list';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { effects, reducers } from './store';
+import { EffectsModule } from '@ngrx/effects';
+import { StoreModule } from '@ngrx/store';
+import { HttpClientModule } from '@angular/common/http';
 
+
+const StoreDevtools = !environment.production ? StoreDevtoolsModule.instrument({maxAge:50}) : [];
 
 @NgModule({
   declarations: [
@@ -58,7 +65,16 @@ import { MatListModule } from '@angular/material/list'
     MatIconModule,
     MatButtonModule,
     FlexLayoutModule,
-    MatListModule
+    MatListModule,
+    StoreDevtools,
+    StoreModule.forRoot(reducers, {
+      runtimeChecks: {
+        strictActionImmutability: true,
+        strictStateImmutability:true
+      }
+    }),
+    EffectsModule.forRoot(effects),
+    HttpClientModule
 
   ],
   providers: [],
